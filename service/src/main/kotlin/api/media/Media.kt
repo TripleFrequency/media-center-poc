@@ -8,6 +8,7 @@ import io.ktor.locations.Location
 import io.ktor.locations.get
 import io.ktor.response.respondText
 import io.ktor.routing.Route
+import io.ktor.routing.get
 import io.ktor.routing.route
 
 sealed class Type {
@@ -24,6 +25,9 @@ fun Route.moviesRoutes() {
 
 fun Route.mediaRoutes() {
     route("/media") {
+        get {
+            val type = call.request.queryParameters.getAll("")
+        }
         moviesRoutes()
     }
 }
